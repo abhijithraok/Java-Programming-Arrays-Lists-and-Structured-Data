@@ -3,6 +3,7 @@ import javax.print.DocFlavor;
 /**
  * Created by abhijith on 30-May-17.
  */
+
 public class wordPlay {
     public static void main(String[] args) {
         wordPlay a = new wordPlay();
@@ -10,7 +11,7 @@ public class wordPlay {
         a.testreplaceVowels();
         a.testEmphasize();
     }
-
+/* this method returns true if given input is vowel */
     public boolean isVowel(char ch) {
         boolean a = false;
         String vowel = "aeiouAEIOU";
@@ -23,7 +24,7 @@ public class wordPlay {
 
         return a;
     }
-
+// This method return a String that is the string phrase with all the vowels (uppercase or lowercase) replaced by ch
     public String replaceVowels(String phrase, char ch) {
         StringBuilder replace = new StringBuilder(phrase);
         for (int i = 0; i < phrase.length(); i++) {
@@ -35,6 +36,10 @@ public class wordPlay {
         }
         return replace.toString();
     }
+/* this method returns a string that is string phrase but with Char ch replaced by
+    1)‘*’ if it is in an odd number location in the string (e.g. the first character has an odd number location but an even index, it is at index 0), or
+    2)‘+’ if it is in an even number location in the string (e.g. the second character has an even number location but an odd index, it is at index 1).
+ */
 
     public String emphasize(String phrase, char ch) {
         StringBuilder replace = new StringBuilder(phrase);
