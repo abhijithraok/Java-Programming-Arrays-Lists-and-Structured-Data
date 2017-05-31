@@ -4,6 +4,13 @@ import javax.print.DocFlavor;
  * Created by abhijith on 30-May-17.
  */
 public class wordPlay {
+    public static void main(String[] args) {
+        wordPlay a = new wordPlay();
+        a.testWordplay();
+        a.testreplaceVowels();
+        a.testEmphasize();
+    }
+
     public boolean isVowel(char ch) {
         boolean a = false;
         String vowel = "aeiouAEIOU";
@@ -46,7 +53,6 @@ public class wordPlay {
 
     }
 
-
     public void testWordplay() {
         Boolean ch = isVowel('a');
         System.out.println(ch);
@@ -61,13 +67,6 @@ public class wordPlay {
     public void testEmphasize() {
         String a = emphasize("Mary Bella Abracadabra", 'a');
         System.out.println(a);
-    }
-
-    public static void main(String[] args) {
-        wordPlay a = new wordPlay();
-         a.testWordplay();
-         a.testreplaceVowels();
-        a.testEmphasize();
     }
 
 }
