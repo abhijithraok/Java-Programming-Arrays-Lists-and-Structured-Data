@@ -8,50 +8,55 @@ import java.io.*;
 import java.util.*;
 
 public class wordLengths {
-    public static HashMap hm = new HashMap();
+    private static HashMap map = new HashMap();
+
     public static void main(String[] args) throws Exception {
         FileResource resource = new FileResource();
-        ArrayList<Integer> array = new ArrayList<Integer>();
-
-      //  int[] counts = new int[31];
-        countWordLengths(resource, array);
-        System.out.println(hm);
-       int max = indexOfMax(array);
-    System.out.print(max);
+        int[] counts = new int[31];
+        countWordLengths(resource, counts);
+        System.out.println(indexOfMax(counts));
     }
 
-    public static void countWordLengths(FileResource resource, ArrayList<Integer> array) {
+    public static void countWordLengths(FileResource resource, int[] counts) {
         for (String word : resource.words()) {
             int wordLength = 0;
             StringBuilder sb = new StringBuilder(word);
-            //  System.out.println(sb);
+
             for (int i = 0; i < sb.length(); i++) {
                 if (!Character.isLetter(sb.charAt(i))) {
                     sb.deleteCharAt(i);
-                }
-                //   else if(i ==sb.length()-1 && !Character.isLetter(sb.charAt(i))){
-                //    sb.deleteCharAt(i);
-                // }
-                else {
+                } else {
                     wordLength++;
                 }
 
             }
             String result = sb.toString();
-            hm.put(result,wordLength);
-            array.add(wordLength++);
-           // System.out.println(result);
-
+            map.put(result, wordLength);
+            counts[wordLength]++;
+            //System.out.print(map);
+        }
+        for (int index = 0; index < counts.length; index++) {
+            if (counts[index] != 0) {
+                System.out.print(counts[index] + " word of length" + index + ": ");
+                Set set = map.entrySet();
+                Iterator i = set.iterator();
+                while (i.hasNext()) {
+                    Map.Entry me = (Map.Entry) i.next();
+                    if (me.getValue().equals(index))
+                        System.out.print(me.getKey() + " ");
+                }
+                System.out.println();
+            }
 
         }
-
     }
 
-    public static  int indexOfMax(ArrayList<Integer> values) {
+
+    public static int indexOfMax(int[] values) {
         int max = 0;
-        for (int i = 0; i < values.size(); i++) {
-            if (values.get(i) >= max) {
-                max = values.get(i);
+        for (int i = 0; i < values.length; i++) {
+            if (values[i] >= max) {
+                max = values[i];
 
             }
 
