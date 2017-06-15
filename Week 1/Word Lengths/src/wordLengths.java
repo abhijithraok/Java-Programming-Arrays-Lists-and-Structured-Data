@@ -33,17 +33,17 @@ public class wordLengths {
             String result = sb.toString();
             map.put(result, wordLength);
             counts[wordLength]++;
-            //System.out.print(map);
+
         }
         for (int index = 0; index < counts.length; index++) {
             if (counts[index] != 0) {
-                System.out.print(counts[index] + " word of length" + index + ": ");
+              //  System.out.print(counts[index] + " word of length" + index + ": ");
                 Set set = map.entrySet();
                 Iterator i = set.iterator();
                 while (i.hasNext()) {
                     Map.Entry me = (Map.Entry) i.next();
                     if (me.getValue().equals(index))
-                        System.out.print(me.getKey() + " ");
+                       System.out.print(me.getKey() + " ");
                 }
                 System.out.println();
             }

@@ -17,4 +17,24 @@ public class casesarDecryption {
         }
         return count;
     }
+    public static int maxIndex(int[] count){
+        int max = 0;
+        for(int i = 0; i < count.length;i++){
+            if(count[i] >= max){
+                max = count[i];
+            }
+
+        }
+        return max;
+    }
+    
+    public static String decrypt(String encrypted){
+        int[] freqs = countLetters(encrypted);
+        int maxDex = maxIndex(freqs);
+        int dkey = maxDex-4;
+        if(maxDex < 4){
+            dkey = 26-(4-maxDex);
+        }
+        return encrypt(encrypted,26-dkey);
+    }
 }
