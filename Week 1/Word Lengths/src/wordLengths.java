@@ -37,7 +37,7 @@ public class wordLengths {
         }
         for (int index = 0; index < counts.length; index++) {
             if (counts[index] != 0) {
-              //  System.out.print(counts[index] + " word of length" + index + ": ");
+               System.out.print(counts[index] + " word of length" + index + ": ");
                 Set set = map.entrySet();
                 Iterator i = set.iterator();
                 while (i.hasNext()) {

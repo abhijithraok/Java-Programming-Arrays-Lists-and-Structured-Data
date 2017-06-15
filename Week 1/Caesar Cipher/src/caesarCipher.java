@@ -7,7 +7,7 @@ import edu.duke.*;
 public class caesarCipher {
     public static void main(String[] args) {
         caesarCipher a = new caesarCipher();
-        a.testCaesarCipher();
+      //  a.testCaesarCipher();
         a.testEncryptTwoKeys();
     }
 
@@ -44,7 +44,7 @@ public class caesarCipher {
         //Compute the shifted alphabet
         String shiftedAlphabet1 = alphabet.substring(key1) + alphabet.substring(0, key1);
         String shiftedAlphabet2 = alphabet.substring(key2) + alphabet.substring(0, key2);
-        for (i = 0; i < input.length(); i += 2) {
+        for (i = 0; i < encrypt.length(); i += 2) {
             char currChar = encrypt.charAt(i);
             int ind = alphabet.indexOf(Character.toUpperCase(currChar));
             if (ind != -1) {
@@ -79,14 +79,14 @@ public class caesarCipher {
     public void testCaesarCipher() {
         FileResource fr = new FileResource();
         String message = fr.asString();
-        String encrypted = encrypt(message, 15);
+        String encrypted = encrypt(message, 23);
         System.out.println("key is " + 23 + "\n" + encrypted);
     }
 
     public void testEncryptTwoKeys() {
         FileResource fr = new FileResource();
         String message = fr.asString();
-        String b = encryptTwoKeys(message, 8, 21);
+        String b = encryptTwoKeys(message, 4, 7);
         System.out.println(b);
     }
 }
