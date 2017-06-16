@@ -1,15 +1,16 @@
 /**
  * Created by abhijith on 6/15/2017.
  */
+
 import edu.duke.*;
+
 public class casesarDecryption {
     public static void main(String[] args) {
-      String message1 = "Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu";
-       System.out.println("Encrypted message is :" + message1);
+        String message1 = "Gwpv c vbuq pvokki yfve iqqu qc bgbgbgbgbgbgbgbgbu";
+        System.out.println("Encrypted message is :" + message1);
         String b = decrypt(message1);
-        System.out.println("Decrypted message is :"+ b);
-        decryptTwoKeys("Akag tjw Xibhr awoa aoee xakex znxag xwko");
-
+        System.out.println("Decrypted message is :" + b);
+        //decryptTwoKeys("Akag tjw Xibhr awoa aoee xakex znxag xwko");
         FileResource fr = new FileResource();
         String message = fr.asString();
         String s1 = halfOfString(message, 0);
@@ -20,7 +21,7 @@ public class casesarDecryption {
         int key2 = getKey(s2);
         System.out.println("Two keys found: key1= " + key1 + ", key2= " + key2);
         CaesarCipher cc = new CaesarCipher();
-        System.out.println(cc.encryptTwoKeys(message, 26-key1, 26-key2));
+        System.out.println(cc.encryptTwoKeys(message, 26 - key1, 26 - key2));
 
 
     }
@@ -56,17 +57,16 @@ public class casesarDecryption {
         int maxDex = maxIndex(freqs);
         int dkey = 4 - maxDex;
 
-        if(maxDex > 4) {
+        if (maxDex > 4) {
 
             dkey = 26 - (maxDex - 4);
 
         }
 
 
-
         System.out.println("Key is " + dkey);
 
-        return cc.encrypt(encrypted, 26-dkey);
+        return cc.encrypt(encrypted, 26 - dkey);
 
     }
 
@@ -88,15 +88,15 @@ public class casesarDecryption {
         return dkey;
     }
 
-    public  static void decryptTwoKeys(String encrypted){
+    public static void decryptTwoKeys(String encrypted) {
         String s1 = halfOfString(encrypted, 0);
         String s2 = halfOfString(encrypted, 1);
         System.out.println(s1);
         System.out.println(s2);
         int key1 = getKey(s1);
-       int key2 = getKey(s2);
+        int key2 = getKey(s2);
         System.out.println("Two keys found: key1= " + key1 + ", key2= " + key2);
-      CaesarCipher cc = new CaesarCipher();
-        System.out.println(cc.encryptTwoKeys(encrypted, 26-key1, 26-key2));
+        CaesarCipher cc = new CaesarCipher();
+        System.out.println(cc.encryptTwoKeys(encrypted, 26 - key1, 26 - key2));
     }
 }
