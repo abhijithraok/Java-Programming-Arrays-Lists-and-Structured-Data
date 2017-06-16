@@ -23,9 +23,13 @@ public class wordLengths {
             StringBuilder sb = new StringBuilder(word);
 
             for (int i = 0; i < sb.length(); i++) {
-                if (!Character.isLetter(sb.charAt(i))) {
+                if (i ==0 && !Character.isLetter(sb.charAt(i))) {
                     sb.deleteCharAt(i);
-                } else {
+                }
+                else if( i==sb.length()-1 && !Character.isLetter(sb.charAt(i))){
+                    sb.deleteCharAt(i);
+                }
+                else {
                     wordLength++;
                 }
 

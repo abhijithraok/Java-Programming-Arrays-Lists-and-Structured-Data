@@ -6,11 +6,11 @@ import edu.duke.*;
 
 public class casesarDecryption {
     public static void main(String[] args) {
-       // String message1 = "Hfs cpwewloj loks cd Hoto kyg Cyy.";
-        //System.out.println("Encrypted message is :" + message1);
-       // String b = decrypt(message1);
-      //  System.out.println("Decrypted message is :" + b);
-        decryptTwoKeys("Aal uttx hm aal Qtct Fhljha pl Wbdl. Pvxvxlx!");
+        String message1 = "Gwpv c ";
+        System.out.println("Encrypted message is :" + message1);
+        String b = decrypt(message1);
+        System.out.println("Decrypted message is :" + b);
+        //decryptTwoKeys("Akag tjw Xibhr awoa aoee xakex znxag xwko");
         FileResource fr = new FileResource();
         String message = fr.asString();
         String s1 = halfOfString(message, 0);

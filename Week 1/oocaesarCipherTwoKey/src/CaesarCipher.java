@@ -8,7 +8,7 @@ public class CaesarCipher {
         public static void main(String[] args) {
            CaesarCipher a = new CaesarCipher();
              a.testCaesarCipher();
-           a.testEncryptTwoKeys();
+           // a.testEncryptTwoKeys();
         }
 
         /**

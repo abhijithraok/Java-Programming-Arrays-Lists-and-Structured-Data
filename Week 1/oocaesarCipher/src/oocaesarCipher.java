@@ -15,10 +15,10 @@ public class oocaesarCipher {
     }
 
     public static void main(String[] args) {
-        oocaesarCipher cc = new oocaesarCipher(5);
-        String encrypt = cc.encrypt("hello,how are you?");
+        oocaesarCipher cc = new oocaesarCipher(15);
+        String encrypt = cc.encrypt("Can you imagine life WITHOUT the internet AND computers in your pocket?");
         System.out.println(encrypt);
-        System.out.println(cc.dectrypt(encrypt));
+        System.out.println(cc.decrypt(encrypt));
 
     }
 
@@ -43,7 +43,7 @@ public class oocaesarCipher {
         return encrypt.toString();
     }
 
-    public String dectrypt(String input) {
+    public String decrypt(String input) {
         oocaesarCipher cc = new oocaesarCipher(26 - masterkey);
         return cc.encrypt(input);
     }

@@ -7,7 +7,7 @@ import edu.duke.*;
 public class caesarCipher {
     public static void main(String[] args) {
         caesarCipher a = new caesarCipher();
-      //  a.testCaesarCipher();
+      // a.testCaesarCipher();
         a.testEncryptTwoKeys();
     }
 
@@ -79,14 +79,14 @@ public class caesarCipher {
     public void testCaesarCipher() {
         FileResource fr = new FileResource();
         String message = fr.asString();
-        String encrypted = encrypt(message, 23);
+        String encrypted = encrypt(message, 15);
         System.out.println("key is " + 23 + "\n" + encrypted);
     }
 
     public void testEncryptTwoKeys() {
         FileResource fr = new FileResource();
         String message = fr.asString();
-        String b = encryptTwoKeys(message, 4, 7);
+        String b = encryptTwoKeys(message, 12, 2);
         System.out.println(b);
     }
 }
