@@ -52,7 +52,7 @@ public class wordFrequencies {
 
     public void tester() {
         findUnique();
-        System.out.println("#unique works : " + myWord.size());
+        System.out.println("#unique words : " + myWord.size());
         for (int i = 0; i < myWord.size(); i++) {
             System.out.println(myFreqs.get(i) + "\t" + myWord.get(i));
         }
