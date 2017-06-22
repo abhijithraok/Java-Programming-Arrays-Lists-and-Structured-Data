@@ -1,9 +1,12 @@
 /**
  * Created by Abhijith on 6/22/2017.
+ *  Assignment 4: Codon Count
+ * The program finds out how many times each codon occurs in a strand
  */
 
 import edu.duke.*;
 import java.util.*;
+
 
 public class codonCount {
     private HashMap<String, Integer> map;
