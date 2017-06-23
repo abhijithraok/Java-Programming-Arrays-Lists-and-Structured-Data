@@ -70,32 +70,36 @@ public class wordsInFiles {
     }
 
     private void printFilesIn(String word) {
-        System.out.println("The files contain " + word + " are: \t");
-        ArrayList<String> list = new ArrayList<String>();
-        for (String current : map.keySet()) {
-            if (current == word) list = map.get(current);
-        }
-        for (int k = 0; k < list.size(); k++) {
-            System.out.println(list.get(k) + "\t");
+        ArrayList<String> filenames = map.get(word);
+        for (int i = 0; i < filenames.size(); i++) {
+            System.out.println(filenames.get(i));
         }
     }
 
     public void test() {
         buildWordFileMap();
         int max = maxNumber();
-        ArrayList<String> list = wordsInNumFiles(max);
-        System.out.println("The greatest number of files a word appears in is " + max + ", and there are " + list.size() + " such words: ");
-        for (int k = 0; k < list.size(); k++) {
-            System.out.println(list.get(k) + " ");
-        }
-        System.out.println("\t");
-        for (int k = 0; k < list.size(); k++) {
-            printFilesIn(list.get(k));
+        System.out.println("Maximum number of files any word appears in: " + max);
+        System.out.println("All the words that are in " + max + " files:");
+        ArrayList<String> words = wordsInNumFiles(max);
+        for (int i = 0; i < words.size(); i++) {
+            String word = words.get(i);
+          //  System.out.println("The word " + word + " appears in the following files: ");
+          //  printFilesIn(word);
+
         }
 
-
+        System.out.println("Count of words that appear in " + max + " files: " + words.size());
+        System.out.println("To answer the quiz: ");
+        words = wordsInNumFiles(4);
+        System.out.println("Words in 4 files: " + words.size());
+        System.out.println("sad: ");
+        printFilesIn("sad");
     }
 }
+
+
+
 
 
 

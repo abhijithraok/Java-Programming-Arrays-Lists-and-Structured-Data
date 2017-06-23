@@ -66,7 +66,7 @@ public class codonCount {
         FileResource fr = new FileResource();
         String dna = fr.asString().trim();
         int start =1;
-        int end = 5;
+        int end = 7;
         buildCodonMap(0, dna);
         String largest = getMostCommonCodeon();
         System.out.println("Most common codon is "+largest+" with count "+map.get(largest)+"\t");
