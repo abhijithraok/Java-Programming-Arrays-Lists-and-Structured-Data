@@ -26,6 +26,7 @@ public class charactersInPlay {
         // if (endLine != -1) {
         subString = name.substring(0, endLine);
         // }
+        subString =subString.trim();
         int index = myWord.indexOf(subString);//finding index of substring in myword list . if its not found add to list
         if (index == -1) {
             myWord.add(subString);
@@ -66,7 +67,7 @@ public class charactersInPlay {
         //prints list which has freqs greater than num1 and less than num2
         // int max = 0;
         for (int i = 0; i < myFreqs.size(); i++) {
-            if (myFreqs.get(i) > num1 && myFreqs.get(i) <= num2) {
+            if (myFreqs.get(i) >= num1 && myFreqs.get(i) <= num2) {
                 //  max = i;
                 System.out.println("Count greater than  :" +num1+" " +"and less than"+ num2 +" "+ myWord.get(i) + "\t" + myFreqs.get(i));
             }
