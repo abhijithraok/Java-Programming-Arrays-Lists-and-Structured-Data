@@ -77,7 +77,7 @@ public class charactersInPlay {
 
     public void tester() {
         findAllCharacters();
-        charactersWithNumParts(10, 15);
+        charactersWithNumParts(10, 103);
         int index = findMax();
         System.out.println("Character with the most speaking parts " + myWord.get(index) + " " + myFreqs.get(index));
         for (int i = 0; i < myWord.size(); i++) {

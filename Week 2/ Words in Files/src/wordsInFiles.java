@@ -89,12 +89,11 @@ public class wordsInFiles {
 
         }
 
-        System.out.println("Count of words that appear in " + max + " files: " + words.size());
-        System.out.println("To answer the quiz: ");
-        words = wordsInNumFiles(4);
-        System.out.println("Words in 4 files: " + words.size());
-        System.out.println("sad: ");
-        printFilesIn("sad");
+        System.out.println("Numbers of words in 7 file are " +wordsInNumFiles(7).size());
+       System.out.println("number of words in 4 files:"+wordsInNumFiles(4).size());
+        System.out.println("Words in 7 files: " + words.size());
+        System.out.println("laid: ");
+        printFilesIn("laid");
     }
 }
 
