@@ -1,9 +1,12 @@
 /**
  * Created by Abhijith on 6/22/2017.
+ *  Assignment 4: Codon Count
+ * The program finds out how many times each codon occurs in a strand
  */
 
 import edu.duke.*;
 import java.util.*;
+
 
 public class codonCount {
     private HashMap<String, Integer> map;
@@ -30,12 +33,15 @@ public class codonCount {
         return maxValue;
     }
     public void printCodonCounts(int start, int end) {
+        int count = 0;
         for (String key : map.keySet()) {
             int value = map.get(key);
             if (value >= start && value <= end) {
+                count++;
                 System.out.println(key + "\t" + value);
             }
         }
+        System.out.println("number of unique codons  is"+count);
     }
 
     public void buildCodonMap(int start, String dna) {
@@ -63,7 +69,7 @@ public class codonCount {
         FileResource fr = new FileResource();
         String dna = fr.asString().trim();
         int start =1;
-        int end = 5;
+        int end = 100;
         buildCodonMap(0, dna);
         String largest = getMostCommonCodeon();
         System.out.println("Most common codon is "+largest+" with count "+map.get(largest)+"\t");
