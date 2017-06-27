@@ -1,5 +1,6 @@
 /**
  * Created by abhijith on 6/26/2017.
+ * Reading Log FIles and unique IP Addresses
  */
 import  java.util.*;
 public class logEntry
@@ -34,7 +35,6 @@ public class logEntry
     public int getBytesReturned() {
         return bytesReturned;
     }
-
     public String toString() {
         return ipAddress + " " + accessTime + " " + request
                 + " " + statusCode + " " + bytesReturned;

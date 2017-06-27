@@ -14,12 +14,38 @@ public class tester
 
     public void testLogAnalyzer() {
         logAnalyzer cc = new logAnalyzer();
-        cc.readFile("http://www.dukelearntoprogram.com/java/short-test_log");
+        cc.readFile("short-test_log");
         cc.printAll();
     }
+    public void testUniqueIPs(){
+        logAnalyzer cc = new logAnalyzer();
+        cc.readFile("short-test_log");
+        int uniqueIPs = cc.countUniqueIPs();
+        System.out.println("There are "+ uniqueIPs +" " +"IPs");
+    }
+    public  void testPrintAllHigherThanNum(){
+        logAnalyzer cc = new logAnalyzer();
+        cc.readFile("short-test_log");
+        cc.printAllHigherThanNum(200);
+
+    }
+    public void testUniqueIPVisitOnDay(){
+        logAnalyzer cc = new logAnalyzer();
+        cc.readFile("short-test_log");
+       System.out.println(cc.uniqueIPVisitsOnDay("Sep 30"));
+    }
+public void testCountUniqueIpInRange(){
+    logAnalyzer cc = new logAnalyzer();
+    cc.readFile("short-test_log");
+   cc.countUniqueIPsInRange(300,399);
+}
     public static void main(String [] args ){
         tester cc = new tester();
-        cc.testLogEntry();
-        cc.testLogAnalyzer();
+       cc.testLogEntry();
+       cc.testLogAnalyzer();
+        cc.testUniqueIPs();
+        cc.testPrintAllHigherThanNum();
+        cc.testUniqueIPVisitOnDay();
+        cc.testCountUniqueIpInRange();
     }
 }
