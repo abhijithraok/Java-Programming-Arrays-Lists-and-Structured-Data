@@ -102,4 +102,42 @@ public class logAnalyzer {
 
         return Collections.max(IP.values());
     }
+
+    //This method returns an ArrayList of Strings of IP addresses that all have the maximum number of visits to this website
+    public ArrayList iPsMostVisits(HashMap<String, Integer> ip) {
+        ArrayList<String> iPList = new ArrayList<>();
+        HashMap<String, Integer> iPMap;
+        iPMap = countVisitsPerIP();//maps an IP address to the number of times that IP address appears in records
+        int max = mostNumberVisitsByIP(iPMap);//maximum number of visits to webiste by single ip address
+        for (String key : iPMap.keySet()) {
+            if (iPMap.get(key).equals(max)) {
+                iPList.add(key);
+            }
+        }
+
+        return iPList;
+    }
+
+    public HashMap<String, ArrayList<String>> iPsForDays() {
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
+        for (logEntry le : records) {
+            ArrayList<String> IP = new ArrayList<>();
+            String ipAddress = le.getIpAddress();
+            String date = le.getAccessTime().toString();
+            date = date.substring(4, 10);
+            if (!map.containsKey(date)) {
+                IP.add(ipAddress);
+                map.put(date, IP);
+            }
+            else {
+               // if the key has already been used,
+                //  grab the array list and add the value to it
+              ArrayList<String> tempIP =map.get(date);
+              tempIP.add(ipAddress);
+                map.put(date,tempIP);
+            }
+        }
+            return map;
+
+    }
 }
