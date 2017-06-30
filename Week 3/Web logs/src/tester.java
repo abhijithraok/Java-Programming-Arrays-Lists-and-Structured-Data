@@ -9,14 +9,16 @@ public class tester {
         tester cc = new tester();
         // cc.testLogEntry();
         // cc.testLogAnalyzer();
-        // cc.testUniqueIPs();
+       //  cc.testUniqueIPs();
        // cc.testPrintAllHigherThanNum();
-      //  cc.testUniqueIPVisitOnDay();
-       // cc.testCountUniqueIpInRange();
+      cc.testUniqueIPVisitOnDay();
+       cc.testCountUniqueIpInRange();
      //  cc.testCountsVisitPerIP();
-      //  cc.testMostNumberVisitsByIP();
-      //  cc.testIPsMostVisits();
-        cc.testIPsForDays();
+  //  cc.testMostNumberVisitsByIP();
+   //   cc.testIPsMostVisits();
+     //  cc.testIPsForDays();
+      //  cc.testDayWIthMostIpVisits();
+    cc.testIPsWithMostVisitsOnDay();
     }
 
     public void testLogEntry() {
@@ -34,52 +36,67 @@ public class tester {
 
     public void testUniqueIPs() {
         logAnalyzer cc = new logAnalyzer();
-        cc.readFile("short-test_log");
+        cc.readFile("weblog2_log");
         int uniqueIPs = cc.countUniqueIPs();
         System.out.println("There are " + uniqueIPs + " " + "IPs");
     }
 
     public void testPrintAllHigherThanNum() {
         logAnalyzer cc = new logAnalyzer();
-        cc.readFile("short-test_log");
+        cc.readFile("weblog2_log");
         cc.printAllHigherThanNum(400);
 
     }
 
     public void testUniqueIPVisitOnDay() {
         logAnalyzer cc = new logAnalyzer();
-        cc.readFile("weblog3-short_log");
-        int sizeArray = cc.uniqueIPVisitsOnDay("Sep 21").size();
-        System.out.println(cc.uniqueIPVisitsOnDay("Mar 17") + "\n " + "size is:" + sizeArray);
+        cc.readFile("weblog2_log");
+        int sizeArray = cc.uniqueIPVisitsOnDay("Sep 24").size();
+        System.out.println(cc.uniqueIPVisitsOnDay("Sep 24") + "\n " + "size is:" + sizeArray);
     }
 
     public void testCountUniqueIpInRange() {
         logAnalyzer cc = new logAnalyzer();
-        cc.readFile("short-test_log");
-        cc.countUniqueIPsInRange(300, 399);
+        cc.readFile("weblog2_log");
+        cc.countUniqueIPsInRange(200, 299);
     }
     public void testCountsVisitPerIP(){
         logAnalyzer cc = new logAnalyzer();
-        cc.readFile("weblog3-short_log");
+        cc.readFile("weblog1_log");
         HashMap<String,Integer> counts = cc.countVisitsPerIP();
-        System.out.println(counts.size());
+        System.out.println(counts);
     }
     public void testMostNumberVisitsByIP(){
         logAnalyzer cc = new logAnalyzer();
-        cc.readFile("weblog3-short_log");
+        cc.readFile("weblog2_log");
         HashMap<String,Integer> counts = cc.countVisitsPerIP();
         int max = cc.mostNumberVisitsByIP(counts);
         System.out.println(max);
     }
     public void testIPsMostVisits(){
         logAnalyzer cc = new logAnalyzer();
-        cc.readFile("weblog3-short_log");
+        cc.readFile("weblog2_log");
         HashMap<String,Integer> counts = cc.countVisitsPerIP();
         System.out.println(cc.iPsMostVisits(counts));
     }
     public void testIPsForDays(){
         logAnalyzer cc = new logAnalyzer();
-        cc.readFile("weblog3-short_log");
+        cc.readFile("weblog2_log");
         System.out.println(cc.iPsForDays());
+    }
+    public void testDayWIthMostIpVisits(){
+        logAnalyzer cc = new logAnalyzer();
+        cc.readFile("weblog2_log");
+       String day = cc.dayWithMostIPVisits(cc.iPsForDays());
+       System.out.println(day);
+    }
+    public void testIPsWithMostVisitsOnDay(){
+        logAnalyzer cc = new logAnalyzer();
+        cc.readFile("weblog2_log");
+        HashMap<String, ArrayList<String>> map = cc.iPsForDays();
+       // ArrayList<String> IP = cc.iPsWithMostVisitsOnDay(map,"Mar 17");
+        //System.out.println(IP);
+        System.out.println(cc.iPsWithMostVisitsOnDay(map,"Sep 30"));
+
     }
 }

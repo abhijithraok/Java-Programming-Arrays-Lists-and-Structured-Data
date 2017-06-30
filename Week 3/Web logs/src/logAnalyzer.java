@@ -128,16 +128,43 @@ public class logAnalyzer {
             if (!map.containsKey(date)) {
                 IP.add(ipAddress);
                 map.put(date, IP);
-            }
-            else {
-               // if the key has already been used,
+            } else {
+                // if the key has already been used,
                 //  grab the array list and add the value to it
-              ArrayList<String> tempIP =map.get(date);
-              tempIP.add(ipAddress);
-                map.put(date,tempIP);
+                ArrayList<String> tempIP = map.get(date);
+                tempIP.add(ipAddress);
+                map.put(date, tempIP);
             }
         }
-            return map;
+        return map;
 
     }
+
+  public String dayWithMostIPVisits(HashMap<String,ArrayList<String>> map){
+       String day ="";
+         int max =0;
+         for(String key : map.keySet()){
+             int size = map.get(key).size();
+             if(size > max){
+                 max = size;
+                 day = key;
+             }
+         }
+    return day;
+  }
+  public ArrayList iPsWithMostVisitsOnDay(HashMap<String,ArrayList<String>> map, String day){
+      ArrayList<String> list = map.get(day);
+      HashMap<String, Integer> countIP = new HashMap<String, Integer>();
+      int maxCount = 0;
+      for (int count : countIP.values())
+          if (count > maxCount) maxCount = count;
+
+      // fill output list
+      for (String ip : countIP.keySet())
+          if (countIP.get(ip) == maxCount) {
+              list.add(ip);
+          }
+      return list;
+  }
+
 }
