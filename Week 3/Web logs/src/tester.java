@@ -7,17 +7,17 @@ import java.util.*;
 public class tester {
     public static void main(String[] args) {
         tester cc = new tester();
-        // cc.testLogEntry();
-        // cc.testLogAnalyzer();
-       //  cc.testUniqueIPs();
-       // cc.testPrintAllHigherThanNum();
+        cc.testLogEntry();
+         cc.testLogAnalyzer();
+       cc.testUniqueIPs();
+       cc.testPrintAllHigherThanNum();
       cc.testUniqueIPVisitOnDay();
        cc.testCountUniqueIpInRange();
-     //  cc.testCountsVisitPerIP();
-  //  cc.testMostNumberVisitsByIP();
-   //   cc.testIPsMostVisits();
-     //  cc.testIPsForDays();
-      //  cc.testDayWIthMostIpVisits();
+    cc.testCountsVisitPerIP();
+    cc.testMostNumberVisitsByIP();
+      cc.testIPsMostVisits();
+     cc.testIPsForDays();
+      cc.testDayWIthMostIpVisits();
     cc.testIPsWithMostVisitsOnDay();
     }
 
@@ -51,14 +51,14 @@ public class tester {
     public void testUniqueIPVisitOnDay() {
         logAnalyzer cc = new logAnalyzer();
         cc.readFile("weblog2_log");
-        int sizeArray = cc.uniqueIPVisitsOnDay("Sep 24").size();
-        System.out.println(cc.uniqueIPVisitsOnDay("Sep 24") + "\n " + "size is:" + sizeArray);
+        int sizeArray = cc.uniqueIPVisitsOnDay("Sep 27").size();
+        System.out.println(cc.uniqueIPVisitsOnDay("Sep 27") + "\n " + "size is:" + sizeArray);
     }
 
     public void testCountUniqueIpInRange() {
         logAnalyzer cc = new logAnalyzer();
         cc.readFile("weblog2_log");
-        cc.countUniqueIPsInRange(200, 299);
+        cc.countUniqueIPsInRange(400, 499);
     }
     public void testCountsVisitPerIP(){
         logAnalyzer cc = new logAnalyzer();
