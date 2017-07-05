@@ -2,17 +2,18 @@
  * Created by Abhijith on 7/3/2017.
  */
 
-import edu.duke.FileResource;
-
+import edu.duke.*;
+import java.io.*;
 import java.util.*;
 
 public class VigenereBreaker {
 
-    public static void main(String[] args) {
+    public static void main(String[] args
+    ) {
         VigenereBreaker cc = new VigenereBreaker();
         //  cc.breakVigenere();
-        cc.breakVigenere2();
-
+      //  cc.breakVigenere2();
+        cc.breakVigenere3();
     }
 
     //This method returns a String consisting of every totalSlices-th character from message, starting at the whichSlice-th character
@@ -83,8 +84,8 @@ public class VigenereBreaker {
                 largest = tempCount;
                 index = i;
             }
-
         }
+        // System.out.println("Key Length is: "+index+" word count is: "+largest);
         int[] key1 = tryKeyLength(encrypted, index + 1, 'e');
         VigenereCipher vc = new VigenereCipher(key1);
         return vc.decrypt(encrypted);
@@ -99,7 +100,75 @@ public class VigenereBreaker {
         System.out.println(decrypt);
     }
 
+    public String mostCommonCharIn(HashSet<String> dictionary) {
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String word : dictionary) {
+            String letter = word.toLowerCase();
+            for (int i = 0; i < letter.length(); i++) {
+                if (!map.containsKey(letter.charAt(i))) {
+                    map.put(letter, 1);
+                } else {
+                    map.put(letter, map.get(letter) + 1);
+                }
+            }
+
+        }
+        Map.Entry<String, Integer> maxEntry = null;
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0) {
+                maxEntry = entry;
+            }
+
+        }
+        // String result = maxEntry.getKey();
+
+        return maxEntry.getKey();
+    }
+
+    public HashMap<String, String> breakForAllLanguages(String encrypted, HashMap<String, HashSet<String>> languages){
+        HashMap<String, String> decrpytedMessages = new HashMap<String, String>();
+        String language = "";
+        int wordcount = 0;
+        for (String lang: languages.keySet()) {
+            System.out.println("Currently breaking into "+lang);
+            String decrypted_string = breakForLanguage(encrypted, languages.get(lang));
+            //System.out.println(decrypted_string);
+            int count = countWords(decrypted_string, languages.get(lang));
+            if (wordcount < count) {
+                wordcount = count;
+                language = lang;
+            }
+            //System.out.println(count + " valid words\n");
+            System.out.println();
+            decrpytedMessages.put(lang, decrypted_string);
+        }
+        System.out.println("The language of this message is " + language);
+        System.out.println(wordcount + " valid words\n");
+        return decrpytedMessages;
+    }
+    
+    public void breakVigenere3() {
+        FileResource fr = new FileResource();
+        String message = fr.asString();
+        HashMap<String, HashSet<String>> languages = new HashMap<String, HashSet<String>>();
+        DirectoryResource dr = new DirectoryResource();
+        for (File d: dr.selectedFiles()) {
+            FileResource fr2 = new FileResource(d.toString());
+            HashSet<String> result = new HashSet<String>();
+            for (String line: fr2.lines()) {
+                line = line.toLowerCase();
+                result.add(line);
+            }
+            languages.put(d.getName(), result);
+            //System.out.println("Finished reading "+f.getName());
+        }
+        HashMap<String, String> decrypted = breakForAllLanguages(message, languages);
+        //System.out.println(decrypted.get("English"));
+    }
 
 }
+
+
+
 
 
