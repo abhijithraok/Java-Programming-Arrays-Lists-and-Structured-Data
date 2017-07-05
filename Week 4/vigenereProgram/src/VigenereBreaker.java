@@ -11,9 +11,9 @@ public class VigenereBreaker {
     public static void main(String[] args
     ) {
         VigenereBreaker cc = new VigenereBreaker();
-        //  cc.breakVigenere();
-      //  cc.breakVigenere2();
-        cc.breakVigenere3();
+       // cc.breakVigenere();
+      cc.breakVigenere2();
+     // cc.breakVigenere3();
     }
 
     //This method returns a String consisting of every totalSlices-th character from message, starting at the whichSlice-th character
@@ -85,8 +85,10 @@ public class VigenereBreaker {
                 index = i;
             }
         }
-        // System.out.println("Key Length is: "+index+" word count is: "+largest);
-        int[] key1 = tryKeyLength(encrypted, index + 1, 'e');
+        int realKey = index+1;
+        char mostCommonChar = mostCommonCharIn(dictionary).charAt(0);//not working
+         System.out.println("Key Length is: "+index+" word count is: "+largest);
+        int[] key1 = tryKeyLength(encrypted, realKey, mostCommonChar);
         VigenereCipher vc = new VigenereCipher(key1);
         return vc.decrypt(encrypted);
     }
@@ -94,24 +96,25 @@ public class VigenereBreaker {
     public void breakVigenere2() {
         FileResource fr = new FileResource();
         String message = fr.asString();
-        FileResource fr2 = new FileResource("dictionaries/English");
+        FileResource fr2 = new FileResource("dictionaries/German");
         HashSet<String> dictionary = readDictionary(fr2);
         String decrypt = breakForLanguage(message, dictionary);
         System.out.println(decrypt);
+
     }
 
     public String mostCommonCharIn(HashSet<String> dictionary) {
         HashMap<String, Integer> map = new HashMap<>();
         for (String word : dictionary) {
-            String letter = word.toLowerCase();
-            for (int i = 0; i < letter.length(); i++) {
-                if (!map.containsKey(letter.charAt(i))) {
+            word.toLowerCase();
+            String [] letters = word.split("");
+            for (String letter : letters) {
+                if (!map.containsKey(letter)) {
                     map.put(letter, 1);
                 } else {
                     map.put(letter, map.get(letter) + 1);
                 }
             }
-
         }
         Map.Entry<String, Integer> maxEntry = null;
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
@@ -120,7 +123,6 @@ public class VigenereBreaker {
             }
 
         }
-        // String result = maxEntry.getKey();
 
         return maxEntry.getKey();
     }
@@ -132,13 +134,12 @@ public class VigenereBreaker {
         for (String lang: languages.keySet()) {
             System.out.println("Currently breaking into "+lang);
             String decrypted_string = breakForLanguage(encrypted, languages.get(lang));
-            //System.out.println(decrypted_string);
             int count = countWords(decrypted_string, languages.get(lang));
             if (wordcount < count) {
                 wordcount = count;
                 language = lang;
             }
-            //System.out.println(count + " valid words\n");
+
             System.out.println();
             decrpytedMessages.put(lang, decrypted_string);
         }
@@ -146,7 +147,7 @@ public class VigenereBreaker {
         System.out.println(wordcount + " valid words\n");
         return decrpytedMessages;
     }
-    
+
     public void breakVigenere3() {
         FileResource fr = new FileResource();
         String message = fr.asString();
@@ -160,10 +161,10 @@ public class VigenereBreaker {
                 result.add(line);
             }
             languages.put(d.getName(), result);
-            //System.out.println("Finished reading "+f.getName());
+
         }
         HashMap<String, String> decrypted = breakForAllLanguages(message, languages);
-        //System.out.println(decrypted.get("English"));
+
     }
 
 }
