@@ -5,7 +5,7 @@
 ## Assignments:
 ### Week 1
 - [Cryptography: Keeping Information Secret](https://github.com/abhijithraok/Java-Programming-Arrays-Lists-and-Structured-Data/tree/master/Week%201)
-### [Week 2]
+### Week 2
 - [GladLibs: Stories from Templates](https://github.com/abhijithraok/Java-Programming-Arrays-Lists-and-Structured-Data/tree/master/Week%202)
 ### Week 3
 - [Web Server Logs: From Logs to Visits](https://github.com/abhijithraok/Java-Programming-Arrays-Lists-and-Structured-Data/tree/master/Week%203/Web%20logs)
